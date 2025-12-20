@@ -21,3 +21,7 @@ data/*.db
 data/*.csv
 data/*.db
 data/*.sqlite
+
+# Generated metric exports
+reports/metrics_outputs/
+reports/figures/
