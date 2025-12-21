@@ -4,7 +4,24 @@ from pathlib import Path
 
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 
+# Try preferred JP fonts in order
+preferred = [
+    "Noto Sans CJK JP",
+    "Noto Sans JP",
+    "IPAexGothic",
+    "IPAGothic",
+]
+
+available = {f.name for f in font_manager.fontManager.ttflist}
+for name in preferred:
+    if name in available:
+        plt.rcParams["font.family"] = name
+        break
+
+# Avoid minus-sign rendering issues in some fonts
+plt.rcParams["axes.unicode_minus"] = False
 
 FIG_DIR = Path("reports/figures")
 IN_DIR = Path("reports/metrics_outputs")
